@@ -1,0 +1,35 @@
+﻿@model IT7lab.Models.GuestResponse
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RsvpForm</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/Styles.css" />
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        <p>Имя: @Html.TextBoxFor(x => x.Name)</p>
+        <p>Email: @Html.TextBoxFor(x => x.Email)</p>
+        <p>Телефон: @Html.TextBoxFor(x => x.Phone)</p>
+        <p>
+            Вы придёте?
+            @Html.DropDownListFor(x => x.WillAttend, new[] {
+                new SelectListItem() { Text = "Да, я буду", Value = Boolean.TrueString},
+                new SelectListItem() { Text = "Нет, я не смогу", Value = Boolean.FalseString}
+            })
+        </p>
+        <input type="submit" value="Отправить форму RSVP" />
+
+    }
+    <div>
+    </div>
+</body>
+</html>
